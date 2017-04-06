@@ -28,7 +28,7 @@ The authors come from a web development background, so this guide will be most e
 
 * Web dev fundamentals - HTML, CSS, and JavaScript.
 * Node and Express ([more](https://zellwk.com/blog/crud-express-mongodb/)).
-* React ([more](https://facebook.github.io/react/tutorial/tutorial.html)).
+* React basics ([more](https://facebook.github.io/react/tutorial/tutorial.html)).
 
 >If you are new to web development in general, this guide is not the best place to start, I (Gus) would recommend you start with: [Michael Hartl's Learn Enough series](https://www.learnenough.com/tutorials). 
 

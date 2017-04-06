@@ -7,3 +7,4 @@ By [Eric Van Dyn Hoven](https://github.com/evandynh), [Jake Hawkinson](https://g
 * Context
 * Quickstart
 * The App
+* Next Steps
