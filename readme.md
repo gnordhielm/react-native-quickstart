@@ -9,7 +9,7 @@ By [Eric Van Dyn Hoven](https://github.com/evandynh), [Jake Hawkinson](https://g
 * [Context](##Context)
 * [Quickstart](##React-Quickstart)
 * [The App](##Converting-React-to-a-React-Native-app)
-* [Next Steps](##Next-Steps)
+* [Next Steps](https://github.com/gnordhielm/react-native-quickstart##Next-Steps)
 * [Resources](##Resources)
 
 ## Context
