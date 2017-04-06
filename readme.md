@@ -54,9 +54,9 @@ Welcome to using React Native!  Let's go ahead and get started with figuring out
 * Node.js *(We should all have this installed already)*  
 * Xcode 8.x *(For iOS development)*  
 * Android Studio *(For Android development)*  
-* Watchman ```brew install watchman```  
-* React Native CLI ```npm install -g react-native-cli```  
->*if you receive an error, try using ```curl -0 -L https://npmjs.org/install.hs | sudo sh```*
+* Watchman `brew install watchman`  
+* React Native CLI `npm install -g react-native-cli`  
+>*if you receive an error, try using `curl -0 -L https://npmjs.org/install.hs | sudo sh`*
 
 **Setting up Xcode**  
 The fastest way to install Xcode 8 is through the [Mac App Store](https://itunes.apple.com/us/app/xcode/id497799835?mt=12). This install will also include the iOS simulator.  With this tool you will be able to see changes you make to your code dynamically.
@@ -65,13 +65,13 @@ One other step will be to install the Xcode Command Line Tools.  Once Xcode has 
 
 **Testing your Installation**  
 Now we will use the React Native CLI(command line interface) to generate a new project named TestProject.  
->```react-native init TestProject```  
->```cd TestProject```  
->```npm run start -- --root```  
+>`react-native init TestProject`  
+>`cd TestProject`  
+>`npm run start -- --root`  
 
-Since React Native is still a new technology, it has proven to be extremely prone to errors. For the final step above, we would normally run ```react-native run-ios```.  This was not working for us this morning and found the alternative and less intuitive command line to run our test app.
+Since React Native is still a new technology, it has proven to be extremely prone to errors. For the final step above, we would normally run `react-native run-ios`.  This was not working for us this morning and found the alternative and less intuitive command line to run our test app.
 
-From here you can edit the file ```index.ios.js``` to make updates to the app. Use ```Command⌘ + R``` to refresh the simulator view when changes are made to the code.
+From here you can edit the file `index.ios.js` to make updates to the app. Use `Command⌘ + R` to refresh the simulator view when changes are made to the code.
 
 ## Converting React to a React Native app
 
@@ -79,7 +79,7 @@ With React being the key feature and the core principles coming from the React l
 
 We use some ES2015 features in this code example, specifically classes. It is completely feasible to stick with “React.createClass” or use a function form similar to the popular module pattern.
 
-``` 
+```
 var React = require('react');
 
 class HelloThere extends React.Component {
@@ -95,19 +95,20 @@ class HelloThere extends React.Component {
   }
 }
 
-React.render(<HelloThere name="Component" />, document.getElementById('content')); 
-```  
-
+React.render(<HelloThere name="Component" />, document.getElementById('content'));
+```
 
 ### Step 1: Embrace CommonJS Modules 
-Since we are no longer using regular React, at the top of our code we need to change:  
+Since we are no longer using regular React, at the top of our code we need to change:
+
 ```
 var React = require('react');
-```  
+```
+
 to:  
 ```
 var React = require('react-native');
-```  
+```
 
 ### Step 2: There *is* no DOM
 
@@ -119,11 +120,11 @@ Since the DOM is a web thing and we are now working in a mobile environment, the
 
 **So now we have to change this:**
 
-```  
+```
 <div className="box" onClick={this.clickMe.bind(this)}>
 	Hello {this.props.name}. Please click me.
 </div>
-```  
+```
   
 **To this:**  
 
@@ -250,6 +251,49 @@ We have to register the component for the Objective-C side of things which is do
 Our Hello World React Native application has significantly more lines of code than its web counterpart, but on the other side React Native takes separation of concern a bit further especially because styles are defined with the component.
 
 As a side note, we shouldn’t rebind the “clickMe” method to the “this” context in the “render” method, especially if our React (Native) application grows to be a bit more complex. It rebinds the method on every render call which can become quite a lot. The alternative is to bind the method inside the constructor.
+
+## Run a React Native app on your iPhone
+
+You'll notice that React Native's scaffolded file structure looks like this:
+
+```
+__tests__/  
+app.json          
+index.ios.js  
+node_modules/  
+package.json
+android/    
+index.android.js  
+ios/      
+npm-debug.log
+```
+
+When you run `npm run start` (or `npm run start -- --root`) on a Mac, `index.ios.js` is running. You can confirm this by making small changes to the file and hitting `cmd + R` to reload. Those changes should show up. This is a pretty simple environment to work in, you just lean on Xcode's iPhone Simulator and a text editor. 
+
+If you want to test your React Native project on an device, you'll have to use Xcode's tools. `cd` into the `ios/` folder. Let's see what we've got:
+
+```
+build/       
+testProject-tvOS/       
+testProject.xcodeproj/
+testProject/  
+testProject-tvOSTests/  
+testProjectTests/
+```
+
+Ah! There's an Xcode project! Let's open Xcode on our computer, then go `File > Open...` and open `testProject.xcodeproj`. You'll see a lot of warnings and errors. It's okay (for now). 
+
+Select `testProject` in the left-side navigation bar. Scroll down to the `Signing` settings and set `Team` to something (I just use the personal team option).
+
+Now, set your destination device - first, plug your phone into your computer. You'll find it in `Product > Destination` list.
+
+If you run into issues with the iOS release version and your device's iOS version, I will direct you to the `Deployment Target` option in your project's `General` settings. 
+
+If you get issues beyond that, I will ask you to do some Googling and employ your technical sophistication.
+
+The next step will be to authorize the app on your phone. Navigate to `Settings > General > Device Management`, click on the email you want to authorize, then click "trust". 
+
+
 
 ## Next Steps
 
