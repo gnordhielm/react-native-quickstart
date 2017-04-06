@@ -1,4 +1,4 @@
-## Converting React to React Native
+## Converting React to a React Native app
 
 With React being the key feature and the core principles coming from the React library, let’s take a look at what we need to transform a minimal React “Hello World” application into a React Native one.
 
