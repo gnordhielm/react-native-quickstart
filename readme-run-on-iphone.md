@@ -30,7 +30,8 @@ testProjectTests/
 Ah! There's an Xcode project! Let's open Xcode on our computer, then go `File > Open...` and open `testProject.xcodeproj`. You'll see a lot of warnings and errors. It's okay (for now). 
 
 
-If you run into issues with the iOS release version and what your device is running on, I will direct you to the `Deployment Target` option in your project's `General` settings. 
+
+If you run into issues with the iOS release version and your device's iOS version, I will direct you to the `Deployment Target` option in your project's `General` settings. 
 
 
 
