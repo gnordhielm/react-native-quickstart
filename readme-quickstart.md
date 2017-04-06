@@ -14,7 +14,7 @@ The fastest way to install Xcode 8 is through the [Mac App Store](https://itunes
 
 One other step will be to install the Xcode Command Line Tools.  Once Xcode has installed and is open, navigate to preferences in the Xcode menu.  Select the Location tab and install the tools by selecting the most recent version in the Command Line Tools drop down.
 
-**Testing your Installation**
+**Testing your Installation**  
 Now we will use the React Native CLI(command line interface) to generate a new project named TestProject.  
 >```react-native init TestProject```
 >```cd TestProject```  
