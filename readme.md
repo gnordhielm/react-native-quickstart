@@ -6,10 +6,10 @@ By [Eric Van Dyn Hoven](https://github.com/evandynh), [Jake Hawkinson](https://g
 
 ## Contents
 
-* [Context](#Context)
-* [Quickstart](#React-Quickstart)
-* [The App](#Converting-React-to-a-React-Native-app)
-* [Next Steps](#Next-Steps)
+* [Context](#context)
+* [Quickstart](#react-quickstart)
+* [The App](#converting-react-to-a-react-native-app)
+* [Next Steps](#next-steps)
 
 ## Context
 
