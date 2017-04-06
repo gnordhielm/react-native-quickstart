@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('ticTacToe', () => ticTacToe);
+AppRegistry.registerComponent('gusTestProject', () => ticTacToe);
