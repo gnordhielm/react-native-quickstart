@@ -1,8 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+
 
 import React, { Component } from 'react';
 import {
@@ -13,10 +9,9 @@ import {
   View
 } from 'react-native';
 
-
-class gusTestProject extends React.Component {
+class testProject extends React.Component {
   clickMe() {
-    alert('Hi Jake!');
+    alert('Hi There!');
   }
   render() {
     return (
@@ -47,4 +42,6 @@ var styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('gusTestProject', () => gusTestProject);
+/// Exports
+
+AppRegistry.registerComponent('gusTestProject', () => testProject);
