@@ -101,7 +101,13 @@ Using inline styling may seem a little backwards to us at first, but it's our on
 
 The equivalent to clicking in web pages is tapping an element on the mobile device. Let’s change our code so that the “alert” pops up when we tap the element.
 
-In order to do this we'll use a `<TouchableOpacity />` tag.  Let's wrap our View and Text tags inside of the Touchable tag:
+To do this, first let's pull the TouchableOpacity out from React Native. Our deconstructed variables at the top should look like this now:
+
+```
+var {View, Text, StyleSheet, TouchableOpacity} = React;
+```
+
+Let's use our new `<TouchableOpacity />` tags. Start off by wrapping our View and Text tags inside of the Touchable tag:
 
 ```
 <TouchableOpacity onPress={this.clickMe.bind(this)}>
