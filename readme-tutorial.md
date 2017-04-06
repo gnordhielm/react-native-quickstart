@@ -1,4 +1,4 @@
-## Transforming a React App
+## Converting React to a React Native app
 
 With React being the key feature and the core principles coming from the React library, let’s take a look at what we need to transform a minimal React “Hello World” application into a React Native one.
 
@@ -13,7 +13,9 @@ class HelloThere extends React.Component {
   }
   render() {
     return (
-      <div className="box" onClick={this.clickMe.bind(this)}>Hello {this.props.name}. Please click me.</div>
+      <div className="box" onClick={this.clickMe.bind(this)}>
+        Hello {this.props.name}. Please click me.
+      </div>
     );
   }
 }
@@ -23,73 +25,44 @@ React.render(<HelloThere name="Component" />, document.getElementById('content')
 
 
 ### Step 1: Embrace CommonJS Modules 
-In the first step we need to change requiring the React module to use “react-native” instead.
-
+Since we are no longer using regular React, at the top of our code we need to change:  
+```
+var React = require('react');
+```  
+to:  
 ```
 var React = require('react-native');
+```  
 
-class HelloThere extends React.Component {
-  clickMe() {
-    alert('Hi!');
-  }
-  render() {
-    return (
-      <div className="box" onClick={this.clickMe.bind(this)}>Hello {this.props.name}. Please click me.</div>
-    );
-  }
-}
+### Step 2: There *is* no DOM
 
-React.render(<HelloThere name="Component" />, document.getElementById('content'));
-```
-What is usually a part of the tooling pipeline when developing a React web application is an integral part of React Native.
+Since the DOM is a web thing and we are now working in a mobile environment, the DOM is gone in React Native. This means we have to change how we write our HTML inside of jsx files.  
+**Some Examples:**  
+`<div></div>` === `<View></View>`  
+`<span></span>` === `<Text></Text>`
+>Another thing to note is View tags cannot contain any text, so we will just use them as tags to contain multiple things  
 
-### Step 2: There is no DOM
+**So now we have to change this:**
 
-Not surprisingly, there is no DOM on mobile. Where we previously used `<div />` we need to use `<View />` and where we used `<span />` the component we need here is `<Text />`.
-
-```
-var React = require('react-native');
-var {View} = React;
-
-class HelloThere extends React.Component {
-  clickMe() {
-    alert('Hi!');
-  }
-  render() {
-    return (
-      <View className="box" onClick={this.clickMe.bind(this)}>Hello {this.props.name}. Please click me.</View>
-    );
-  }
-}
-
-React.render(<HelloThere name="Component" />, document.getElementById('content'));
-```
-
-While it’s quite convenient to put text directly in `<div />` elements, in the native world text can’t be put directly in a `<View />`. For that we need to insert a `<Text />` component.
+```  
+<div className="box" onClick={this.clickMe.bind(this)}>
+	Hello {this.props.name}. Please click me.
+</div>
+```  
+  
+**To this:**  
 
 ```
-var React = require('react-native');
-var {View, Text} = React;
-
-class HelloThere extends React.Component {
-  clickMe() {
-    alert('Hi!');
-  }
-  render() {
-    return (
-      <View className="box" onClick={this.clickMe.bind(this)}>
-        <Text>Hello {this.props.name}. Please click me.</Text>
-      </View>
-    );
-  }
-}
-
-React.render(<HelloThere name="Component" />, document.getElementById('content'));
+<View className="box" onClick={this.clickMe.bind(this)}>
+  <Text>Hello {this.props.name}. Please click me.</Text>  
+</View>
 ```
 
 ### Step 3: Inline Styles Are the Way to Go
 
-React Native allows us to use the Flexbox modeling instead of messing around with “float” and “inline-block” that we are so familiar with in the web world. The interesting thing is that React Native does not use CSS.
+Because we will only be using JavaScript we don't really have any other options. React Native gives us Flexbox modeling which removes the need to use "float" and "inline-block".  
+
+Here's an example of our code updated to include some styling:  
 
 ```
 var React = require('react-native');
@@ -122,62 +95,26 @@ var styles = StyleSheet.create({
 React.render(<HelloThere name="Component" />, document.getElementById('content'));
 ```
 
-Using inline styles seems bewildering at first. It is similar to the transition React developers had to go through when being confronted with JSX and previously using templating engines like Handlebars or Jade.
+Using inline styling may seem a little backwards to us at first, but it's our only option when working with React and JSX.  Now we can create stylesheets at a component level.  
 
-The idea is that we don’t have stylesheets globally in the way we use CSS. We declare the stylesheets directly at component level, and so we have all the information we need to see what our component does, the layout it creates, and the styles it applies.
-
-```
-var React = require('react-native');
-var {Text} = React;
-
-var Headline = function(props) {
-  this.render = () => <Text style={headlineStyle.text}>{props.caption}</Text>;
-};
-
-var headlineStyles = StyleSheet.create({
-  text: {
-    fontSize: 32,
-    fontWeight: 'bold'
-  }
-});
-
-module.exports = Headline;
-```
 ### Step 4: Handling Events
 
 The equivalent to clicking in web pages is tapping an element on the mobile device. Let’s change our code so that the “alert” pops up when we tap the element.
 
+To do this, first let's pull the TouchableOpacity out from React Native. Our deconstructed variables at the top should look like this now:
+
 ```
-var React = require('react-native');
 var {View, Text, StyleSheet, TouchableOpacity} = React;
+```
 
-class HelloThere extends React.Component {
-  clickMe() {
-    alert('Hi!');
-  }
-  render() {
-    return (
-      <TouchableOpacity onPress={this.clickMe.bind(this)}>
-        <View style={styles.box}>
-          <Text>Hello {this.props.name}. Please click me.</Text>
-        </View>
-      </TouchableOpacity>
-    );
-  }
-}
+Let's use our new `<TouchableOpacity />` tags. Start off by wrapping our View and Text tags inside of the Touchable tag:
 
-var styles = StyleSheet.create({
-  box: {
-    borderColor: 'red',
-    backgroundColor: '#fff',
-    borderWidth: 1,
-    padding: 10,
-    width: 100,
-    height: 100
-  }
-});
-
-React.render(<HelloThere name="Component" />, document.getElementById('content'));
+```
+<TouchableOpacity onPress={this.clickMe.bind(this)}>
+  <View style={styles.box}>
+    <Text>Hello {this.props.name}. Please click me.</Text>
+  </View>
+</TouchableOpacity>
 ```
 
 Instead of events being directly available on `<View />` components, we need to explicitly use elements that trigger events, in our case a touch event when pressing the view. There are different types of touchable components available, each of them providing a different visual feedback.
