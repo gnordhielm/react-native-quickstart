@@ -7,47 +7,44 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
+  TouchableOpacity,
   StyleSheet,
   Text,
   View
 } from 'react-native';
 
-export default class gusTestProject extends Component {
+
+class gusTestProject extends React.Component {
+  clickMe() {
+    alert('Hi Jake!');
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <TouchableOpacity onPress={this.clickMe.bind(this)}>
+          <View style={styles.box}>
+            <Text>Hello {this.props.name}. Please click me.</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
+var styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    alignItems: 'center'
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  box: {
+    borderColor: 'red',
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    padding: 10,
+    width: 100,
+    height: 100
+  }
 });
 
 AppRegistry.registerComponent('gusTestProject', () => gusTestProject);
