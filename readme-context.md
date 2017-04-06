@@ -6,23 +6,23 @@ React Native is a framework by Facebook for building mobile apps. As the name su
 
 [Comparing React Native and Ionic.](https://www.codementor.io/fmcorz/react-native-vs-ionic-du1087rsw)
 
-**A Selection of Apps Built in React Native**
+### A Selection of Apps Built in React Native
 
 ### [Discovery VR](https://itunes.apple.com/us/app/discovery-vr/id1030815031?ls=1&mt=8)
-<br>
+
 ![Discovery VR Icon](./readme-assets/discovery-vr-icon.jpg)
 
 ### [Airbnb](https://itunes.apple.com/us/app/airbnb/id401626263?mt=8&bev=1472279725_4ITWKWGX6KrmU6pT&utm_medium=web&utm_source=airbnb&_branch_match_id=307510898795870823)
-<br>
+
 ![Airbnb Icon](./readme-assets/airbnb-icon.jpg)
 
 ### [Instagram](https://itunes.apple.com/app/instagram/id389801252?mt=8)
-<br>
+
 ![Instagram Icon](./readme-assets/instagram-icon.jpg)
 
 > You'll notice all of those links take you to to the iOS app store. While React Native will work cross-platform, we're going to be developing on Mac OS with Xcode in this guide.
 
-**Prerequisites**
+### Prerequisites
 
 The authors come from a web development background, so this guide will be most effective if you are comfortable working with the following technologies:
 
